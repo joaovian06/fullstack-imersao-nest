@@ -1,0 +1,36 @@
+GET http://localhost:3000/
+
+###
+
+GET http://localhost:3000/routes
+###
+GET http://localhost:3000/routes/64e4a6faceec0ca857b420cc
+
+###
+POST http://localhost:3000/routes
+Content-Type: application/json
+
+{
+    "name": "route test 1",
+    "source_id": "1",
+    "destination_id": "2"
+}
+
+###
+POST http://localhost:3000/routes
+Content-Type: application/json
+
+{
+    "name": "route test 1",
+    "source_id": "ChIJCXABdRvIyJQRAFfwSrF1DuQ",
+    "destination_id": "ChIJlVOAQyjPyJQR5OtWN_CWrzE"
+}
+
+### coisas do mapa
+
+### pegar o place id
+
+GET http://localhost:3000/places?text=av francisco paula souza, campinas
+
+### pegar direcoes entre dois pontos
+GET http://localhost:3000/directions?originId=ChIJCXABdRvIyJQRAFfwSrF1DuQ&destinationId=ChIJlVOAQyjPyJQR5OtWN_CWrzE
