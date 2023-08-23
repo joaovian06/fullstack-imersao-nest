@@ -6,17 +6,19 @@ import { DirectionsService } from 'src/maps/directions/directions.service';
 
 @Injectable()
 export class RoutesService {
-
-  constructor(private prismaService: PrismaService, private directionsService: DirectionsService) {}
+  constructor(
+    private prismaService: PrismaService,
+    private directionsService: DirectionsService,
+  ) {}
 
   async create(createRouteDto: CreateRouteDto) {
-    const {available_travel_modes, geocoded_waypoints, routes, request} = 
+    const { available_travel_modes, geocoded_waypoints, routes, request } =
       await this.directionsService.getDirections(
-        createRouteDto.source_id, 
-        createRouteDto.destination_id
+        createRouteDto.source_id,
+        createRouteDto.destination_id,
       );
 
-    const legs = routes[0].legs[0]
+    const legs = routes[0].legs[0];
     return this.prismaService.route.create({
       data: {
         name: createRouteDto.name,
@@ -41,10 +43,10 @@ export class RoutesService {
           available_travel_modes,
           geocoded_waypoints,
           routes,
-          request
-        })
-      }
-    })
+          request,
+        }),
+      },
+    });
   }
 
   findAll() {
@@ -53,7 +55,7 @@ export class RoutesService {
 
   findOne(id: string) {
     return this.prismaService.route.findUniqueOrThrow({
-      where: { id }
+      where: { id },
     });
   }
 

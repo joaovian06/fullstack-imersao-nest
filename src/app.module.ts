@@ -8,9 +8,10 @@ import { MapsModule } from './maps/maps.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({isGlobal: true}), 
-    PrismaModule, 
-    RoutesModule, MapsModule
+    ConfigModule.forRoot({ isGlobal: true }),
+    PrismaModule,
+    RoutesModule,
+    MapsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
